@@ -81,7 +81,7 @@ namespace Jagapippi.AutoScreen
 
         private void OnScreenChanged()
         {
-            this.OnScreenChanged(Screen.safeArea, new Vector2(Screen.width, Screen.height));
+            this.OnScreenChanged(Screen.safeArea, Screen.size);
         }
 
         private static Rect InvertY(Rect rect, float totalHeight)
