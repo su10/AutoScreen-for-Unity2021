@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 265c224b237504e1587a3d5c03d1a425, type: 3}
+  m_Name: iPadPro_2388x1668_Landscape
+  m_EditorClassIdentifier: 
+  _data:
+    _frame: {fileID: 21300000, guid: e07ee8a197c7a48d489227a2c9d9435b, type: 3}
+    _baseText: iPadPro 2388x1668 Landscape
+    _size: {x: 2388, y: 1668}
+    _safeArea:
+      serializedVersion: 2
+      x: 0
+      y: 40
+      width: 2388
+      height: 1628
