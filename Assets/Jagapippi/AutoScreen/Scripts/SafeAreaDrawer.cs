@@ -39,6 +39,9 @@ namespace Jagapippi.AutoScreen
         void OnGUI()
         {
             if (_rect == Rect.zero) return;
+#if UNITY_EDITOR
+            if (AutoScreenSettings.safeAreaBorder.enabled == false) return;
+#endif
 
             GUI.DrawTexture(
                 position: _rect,

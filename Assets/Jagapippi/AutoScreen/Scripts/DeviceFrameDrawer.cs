@@ -17,6 +17,7 @@ namespace Jagapippi.AutoScreen
         void OnGUI()
         {
             if (_frame == null) return;
+            if (AutoScreenSettings.deviceFrame.enabled == false) return;
 
             GUI.DrawTexture(
                 position: _frame.textureRect,
