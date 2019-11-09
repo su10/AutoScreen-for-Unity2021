@@ -17,7 +17,7 @@ namespace Jagapippi.AutoScreen
         private static readonly PropertyInfo SelectedSizeIndex = GameView.GetProperty("selectedSizeIndex", InstanceFlag);
         private static readonly PropertyInfo CurrentGameViewSize = GameView.GetProperty("currentGameViewSize", InstanceFlag);
 
-        private static EditorWindow instance => EditorWindow.GetWindow(GameView, false, "Game", false);
+        internal static EditorWindow instance => EditorWindow.GetWindow(GameView, false, "Game", false);
         public static bool isOpen => (0 < Resources.FindObjectsOfTypeAll(GameView).Length);
         public static bool hasFocus => (isOpen && (bool) HasFocus.GetValue(instance, null));
         public static GameViewSizeGroupType currentSizeGroupType => (GameViewSizeGroupType) CurrentSizeGroupType.GetValue(instance, null);
