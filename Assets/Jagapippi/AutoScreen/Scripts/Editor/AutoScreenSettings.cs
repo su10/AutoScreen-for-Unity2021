@@ -5,6 +5,8 @@ namespace Jagapippi.AutoScreen
 {
     public static class AutoScreenSettings
     {
+        public static readonly string assetLabel = "AutoScreen";
+
         public static readonly DeviceFrame deviceFrame = new DeviceFrame();
 
         public class DeviceFrame
