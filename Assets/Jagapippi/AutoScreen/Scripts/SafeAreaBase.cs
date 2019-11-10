@@ -32,7 +32,7 @@ namespace Jagapippi.AutoScreen
         {
             GameViewEvent.resolutionChanged += gameViewSize =>
             {
-                if (this != null) this.UpdateRect();
+                if (this != null && this.enabled) this.UpdateRect();
             };
             EditorSceneManager.sceneSaving += (scene, path) =>
             {
