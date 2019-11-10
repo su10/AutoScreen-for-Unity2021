@@ -7,7 +7,7 @@ using UnityEditor.SceneManagement;
 namespace Jagapippi.AutoScreen
 {
     [ExecuteAlways]
-    public abstract class SafeAreaBase : MonoBehaviour
+    public abstract class SafeAreaBase : MonoBehaviour, ISafeAreaUpdatable
     {
         private RectTransform _rectTransform;
         protected RectTransform rectTransform => _rectTransform ?? (_rectTransform = this.GetComponent<RectTransform>());
