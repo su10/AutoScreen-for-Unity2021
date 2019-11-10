@@ -4,7 +4,7 @@ using UnityEngine;
 namespace Jagapippi.AutoScreen
 {
     [Serializable]
-    public class GameViewScreen : IEquatable<GameViewScreen>
+    public sealed class GameViewScreen : IEquatable<GameViewScreen>
     {
         [SerializeField] private Sprite _frame = null;
         [SerializeField] private string _baseText = "";

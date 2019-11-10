@@ -8,7 +8,7 @@ using UnityEditor.SceneManagement;
 namespace Jagapippi.AutoScreen
 {
     [ExecuteAlways]
-    public class AutoScreenManager : MonoBehaviour
+    public sealed class AutoScreenManager : MonoBehaviour
     {
 #if UNITY_EDITOR
 

@@ -10,7 +10,7 @@ namespace Jagapippi.AutoScreen
     }
 
     [Serializable]
-    public class GameViewSize
+    public sealed class GameViewSize
     {
         [SerializeField] private string m_BaseText;
         [SerializeField] private GameViewSizeType m_SizeType;

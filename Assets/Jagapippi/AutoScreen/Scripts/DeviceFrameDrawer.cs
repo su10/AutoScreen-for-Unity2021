@@ -3,7 +3,7 @@
 namespace Jagapippi.AutoScreen
 {
     [ExecuteAlways]
-    public class DeviceFrameDrawer : MonoBehaviour
+    public sealed class DeviceFrameDrawer : MonoBehaviour
     {
 #if UNITY_EDITOR
         private Sprite _frame;

@@ -2,7 +2,7 @@
 
 namespace Jagapippi.AutoScreen
 {
-    internal class EnumFlagsAttribute : PropertyAttribute
+    internal sealed class EnumFlagsAttribute : PropertyAttribute
     {
         public EnumFlagsAttribute()
         {

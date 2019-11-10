@@ -7,7 +7,7 @@ using UnityEditor;
 namespace Jagapippi.AutoScreen
 {
     [CreateAssetMenu(menuName = "ScriptableObjects/GameViewScreen")]
-    public class GameViewScreenAsset : ScriptableObject
+    public sealed class GameViewScreenAsset : ScriptableObject
     {
 #if UNITY_EDITOR
         public static GameViewScreenAsset Load(string baseText)

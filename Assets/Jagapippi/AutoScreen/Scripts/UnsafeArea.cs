@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Jagapippi.AutoScreen
 {
-    public class UnsafeArea : SafeAreaBase
+    public sealed class UnsafeArea : SafeAreaBase
     {
         public enum Position
         {

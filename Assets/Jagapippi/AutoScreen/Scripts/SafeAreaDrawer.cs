@@ -5,7 +5,7 @@
 namespace Jagapippi.AutoScreen
 {
     [ExecuteAlways]
-    public class SafeAreaDrawer : MonoBehaviour
+    public sealed class SafeAreaDrawer : MonoBehaviour
     {
         [SerializeField] private float _borderWidth = 2;
         [SerializeField] private Color _borderColor = Color.green;

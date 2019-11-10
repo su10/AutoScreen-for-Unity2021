@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Jagapippi.AutoScreen
 {
-    public class SafeArea : SafeAreaBase
+    public sealed class SafeArea : SafeAreaBase
     {
         [Flags]
         public enum Padding
