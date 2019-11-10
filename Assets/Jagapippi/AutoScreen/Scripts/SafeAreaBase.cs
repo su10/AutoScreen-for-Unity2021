@@ -16,6 +16,11 @@ namespace Jagapippi.AutoScreen
         {
             this.ResetRect();
             this.UpdateRect();
+
+            if (this.GetComponent<RuntimeSafeAreaUpdater>() == false)
+            {
+                this.gameObject.AddComponent<RuntimeSafeAreaUpdater>();
+            }
         }
 
         protected virtual void ResetRect()
