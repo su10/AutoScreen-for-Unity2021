@@ -6,48 +6,45 @@ namespace Jagapippi.AutoScreen
 {
     public static class GameViewEvent
     {
-        public static event Action<GameViewSize> resolutionChanged;
         public static event Action opened;
+        public static event Action<GameViewSize> resolutionChanged;
         public static event Action closed;
 
         [InitializeOnLoadMethod]
         static void Initialize()
         {
+            var isOpen = false;
+
+            EditorApplication.update += () =>
             {
-                var previousSizeIndex = -1;
-
-                EditorApplication.update += () =>
+                if (isOpen == false && GameViewProxy.isOpen)
                 {
-                    if (GameViewProxy.hasFocus == false) return;
+                    opened?.Invoke();
+                    isOpen = true;
+                }
+            };
 
-                    var currentSizeIndex = GameViewProxy.selectedSizeIndex;
-                    if (previousSizeIndex == currentSizeIndex) return;
+            var previousSizeIndex = -1;
 
-                    resolutionChanged?.Invoke(GameViewProxy.currentGameViewSize);
-                    previousSizeIndex = currentSizeIndex;
-                };
-            }
-
+            EditorApplication.update += () =>
             {
-                var isOpen = false;
+                if (GameViewProxy.hasFocus == false) return;
 
-                EditorApplication.update += () =>
+                var currentSizeIndex = GameViewProxy.selectedSizeIndex;
+                if (previousSizeIndex == currentSizeIndex) return;
+
+                resolutionChanged?.Invoke(GameViewProxy.currentGameViewSize);
+                previousSizeIndex = currentSizeIndex;
+            };
+
+            EditorApplication.update += () =>
+            {
+                if (isOpen && GameViewProxy.isOpen == false)
                 {
-                    if (isOpen == false && GameViewProxy.isOpen)
-                    {
-                        opened?.Invoke();
-                        isOpen = true;
-                        return;
-                    }
-
-                    if (isOpen && GameViewProxy.isOpen == false)
-                    {
-                        closed?.Invoke();
-                        isOpen = false;
-                        return;
-                    }
-                };
-            }
+                    closed?.Invoke();
+                    isOpen = false;
+                }
+            };
         }
     }
 }
