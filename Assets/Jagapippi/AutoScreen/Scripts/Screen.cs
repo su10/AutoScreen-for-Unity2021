@@ -10,7 +10,7 @@ namespace Jagapippi.AutoScreen
             get
             {
 #if UNITY_EDITOR
-                return GameViewProxy.currentGameViewSize.width;
+                return GameViewProxy.currentGameViewSize?.width ?? UnityScreen.width;
 #else
                 return UnityScreen.width;
 #endif
@@ -22,7 +22,7 @@ namespace Jagapippi.AutoScreen
             get
             {
 #if UNITY_EDITOR
-                return GameViewProxy.currentGameViewSize.height;
+                return GameViewProxy.currentGameViewSize?.height ?? UnityScreen.height;
 #else
                 return UnityScreen.height;
 #endif
