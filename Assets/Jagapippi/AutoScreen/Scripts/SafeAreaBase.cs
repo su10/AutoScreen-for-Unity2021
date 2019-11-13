@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 #if UNITY_EDITOR
+using UnityEditor.Experimental.SceneManagement;
 using UnityEditor.SceneManagement;
 #endif
 
@@ -39,6 +40,8 @@ namespace Jagapippi.AutoScreen
             GameViewEvent.resolutionChanged += this.OnResolutionChanged;
             EditorSceneManager.sceneSaving += this.OnSceneSaving;
             EditorSceneManager.sceneSaved += this.OnSceneSaved;
+            PrefabStage.prefabSaving += this.OnPrefabSaving;
+            PrefabStage.prefabSaved += this.OnPrefabSaved;
 
             this.rectTransform.hideFlags = HideFlags.NotEditable;
         }
@@ -48,6 +51,8 @@ namespace Jagapippi.AutoScreen
             GameViewEvent.resolutionChanged -= this.OnResolutionChanged;
             EditorSceneManager.sceneSaving -= this.OnSceneSaving;
             EditorSceneManager.sceneSaved -= this.OnSceneSaved;
+            PrefabStage.prefabSaving -= this.OnPrefabSaving;
+            PrefabStage.prefabSaved -= this.OnPrefabSaved;
 
             this.rectTransform.hideFlags = HideFlags.None;
         }
@@ -63,6 +68,16 @@ namespace Jagapippi.AutoScreen
         }
 
         private void OnSceneSaved(Scene scene)
+        {
+            if (this.rectTransform) this.UpdateRect();
+        }
+
+        private void OnPrefabSaving(GameObject prefabContentsRoot)
+        {
+            if (this.rectTransform) this.ResetRect();
+        }
+
+        private void OnPrefabSaved(GameObject prefabContentsRoot)
         {
             if (this.rectTransform) this.UpdateRect();
         }
