@@ -2,6 +2,7 @@
 
 namespace Jagapippi.AutoScreen
 {
+    [DisallowMultipleComponent]
     public class RuntimeSafeAreaUpdater : MonoBehaviour
     {
         private ISafeAreaUpdatable _target;
