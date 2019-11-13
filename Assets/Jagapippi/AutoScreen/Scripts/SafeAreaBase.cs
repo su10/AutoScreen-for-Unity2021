@@ -57,27 +57,18 @@ namespace Jagapippi.AutoScreen
             this.rectTransform.hideFlags = HideFlags.None;
         }
 
-        private void OnResolutionChanged(GameViewSize size)
-        {
-            if (this != null && this.enabled) this.UpdateRect();
-        }
+        private void OnResolutionChanged(GameViewSize size) => this.TryUpdateRect();
+        private void OnSceneSaving(Scene scene, string path) => this.TryResetRect();
+        private void OnSceneSaved(Scene scene) => this.TryUpdateRect();
+        private void OnPrefabSaving(GameObject prefabContentsRoot) => this.TryResetRect();
+        private void OnPrefabSaved(GameObject prefabContentsRoot) => this.TryUpdateRect();
 
-        private void OnSceneSaving(Scene scene, string path)
-        {
-            if (this.rectTransform) this.ResetRect();
-        }
-
-        private void OnSceneSaved(Scene scene)
-        {
-            if (this.rectTransform) this.UpdateRect();
-        }
-
-        private void OnPrefabSaving(GameObject prefabContentsRoot)
+        private void TryResetRect()
         {
             if (this.rectTransform) this.ResetRect();
         }
 
-        private void OnPrefabSaved(GameObject prefabContentsRoot)
+        private void TryUpdateRect()
         {
             if (this.rectTransform) this.UpdateRect();
         }
