@@ -9,7 +9,7 @@ namespace Jagapippi.AutoScreen
     {
         public static bool IsInHierarchy(Component component)
         {
-            return (IsInPrefabAsset(component) == false) && (IsInPrefabStage(component) == false);
+            return component.gameObject.scene.IsValid();
         }
 
         public static bool IsInPrefabAsset(Component component)
@@ -19,7 +19,7 @@ namespace Jagapippi.AutoScreen
 
         public static bool IsInPrefabStage(Component component)
         {
-            return PrefabStageUtility.GetCurrentPrefabStage()?.IsPartOfPrefabContents(component.gameObject) ?? false;
+            return PrefabStageUtility.GetCurrentPrefabStage() != null && IsInHierarchy(component);
         }
     }
 }
