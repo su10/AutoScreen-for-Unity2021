@@ -37,6 +37,9 @@ namespace Jagapippi.AutoScreen
         }
 
 #if UNITY_EDITOR
+        private void LockRect() => this.rectTransform.hideFlags = HideFlags.NotEditable;
+        private void UnlockRect() => this.rectTransform.hideFlags = HideFlags.None;
+
         void OnEnable()
         {
             GameViewEvent.resolutionChanged += this.OnResolutionChanged;
@@ -45,7 +48,7 @@ namespace Jagapippi.AutoScreen
             PrefabStage.prefabSaving += this.OnPrefabSaving;
             PrefabStage.prefabSaved += this.OnPrefabSaved;
 
-            this.rectTransform.hideFlags = HideFlags.NotEditable;
+            this.LockRect();
         }
 
         void OnDisable()
@@ -56,7 +59,7 @@ namespace Jagapippi.AutoScreen
             PrefabStage.prefabSaving -= this.OnPrefabSaving;
             PrefabStage.prefabSaved -= this.OnPrefabSaved;
 
-            this.rectTransform.hideFlags = HideFlags.None;
+            this.UnlockRect();
         }
 
         private void OnResolutionChanged(GameViewSize size) => this.TryUpdateRect();
