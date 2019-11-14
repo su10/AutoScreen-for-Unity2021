@@ -43,7 +43,7 @@ namespace Jagapippi.AutoScreen
 
         private static AutoScreenManager FindInstanceInHierarchy()
         {
-            return Resources.FindObjectsOfTypeAll<AutoScreenManager>().FirstOrDefault(PrefabHelper.IsInHierarchy);
+            return Resources.FindObjectsOfTypeAll<AutoScreenManager>().FirstOrDefault(manager => manager.IsInHierarchy());
         }
 
         private static AutoScreenManager Instantiate()
@@ -75,7 +75,7 @@ namespace Jagapippi.AutoScreen
 
         void Update()
         {
-            if (PrefabHelper.IsInHierarchy(this) == false) return;
+            if (this.IsInHierarchy() == false) return;
 
             if (this.gameObject.hideFlags != _hideFlags)
             {
