@@ -31,6 +31,7 @@ namespace Jagapippi.AutoScreen
             this.rectTransform.anchoredPosition = Vector3.zero;
             this.rectTransform.anchorMin = new Vector2(0.5f, 0.5f);
             this.rectTransform.anchorMax = new Vector2(0.5f, 0.5f);
+            this.rectTransform.pivot = new Vector2(0.5f, 0.5f);
             this.rectTransform.localRotation = Quaternion.identity;
             this.rectTransform.localScale = Vector3.one;
         }
