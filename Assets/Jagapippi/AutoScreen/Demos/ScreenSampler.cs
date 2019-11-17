@@ -1,4 +1,7 @@
-﻿using System.Text;
+﻿#if UNITY_2019_2_OR_NEWER
+using System.Linq;
+#endif
+using System.Text;
 using UnityEngine;
 using UnityEngine.UI;
 

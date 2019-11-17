@@ -1,10 +1,13 @@
 ﻿#if UNITY_EDITOR
 using UnityEditor;
-using UnityEditor.Experimental.UIElements;
 using UnityEngine;
+#if !UNITY_2019_1_OR_NEWER
 using UnityEngine.Experimental.UIElements;
-using UnityEngine.Experimental.UIElements.StyleEnums;
 using PopupWindow = UnityEngine.Experimental.UIElements.PopupWindow;
+#else
+using UnityEngine.UIElements;
+using PopupWindow = UnityEngine.UIElements.PopupWindow;
+#endif
 
 namespace Jagapippi.AutoScreen
 {
@@ -33,9 +36,14 @@ namespace Jagapippi.AutoScreen
             {
                 root.Add(gearImage.image);
 
-                gearImage.style.positionType = PositionType.Absolute;
-                gearImage.style.positionTop = 15;
-                gearImage.style.positionLeft = 3;
+                var style = gearImage.style;
+                style.SetPositionAbsolute();
+                style.SetTop(15);
+#if !UNITY_2019_1_OR_NEWER
+                style.SetLeft(3);
+#elif UNITY_2019_3_OR_NEWER
+                style.SetTop(20);
+#endif
 
                 gearImage.image.RegisterCallback<MouseDownEvent>(e =>
                 {
@@ -51,9 +59,16 @@ namespace Jagapippi.AutoScreen
                 settingsWindow.AddTo(root);
 
                 var style = settingsWindow.window.style;
-                style.positionType = PositionType.Absolute;
-                style.positionTop = 12;
-                style.positionLeft = -4;
+                style.SetPositionAbsolute();
+                style.SetTop(12);
+#if !UNITY_2019_1_OR_NEWER
+                style.SetLeft(-4);
+#elif !UNITY_2019_3_OR_NEWER
+                style.SetLeft(-6);
+#else
+                style.SetTop(21);
+                style.SetLeft(1);
+#endif
 
                 settingsWindow.background.RegisterCallback<MouseDownEvent>(e =>
                 {
@@ -93,8 +108,12 @@ namespace Jagapippi.AutoScreen
             public GearImage()
             {
                 this.image = new Image {image = texture};
-                this.style.width = texture.width;
-                this.style.height = texture.height;
+                this.style.width = 15;
+#if !UNITY_2019_3_OR_NEWER
+                this.style.height = 14;
+#else
+                this.style.height = 15;
+#endif
             }
         }
 
@@ -123,14 +142,14 @@ namespace Jagapippi.AutoScreen
                     text = "Device Frame",
                     value = AutoScreenSettings.deviceFrame.enabled
                 };
-                this.deviceFrameToggle.OnValueChanged(e => AutoScreenSettings.deviceFrame.enabled = e.newValue);
+                this.deviceFrameToggle.RegisterValueChangedCallback(e => AutoScreenSettings.deviceFrame.enabled = e.newValue);
 
                 this.safeAreaBorderToggle = new Toggle
                 {
                     text = "Safe Area Border",
                     value = AutoScreenSettings.safeAreaBorder.enabled
                 };
-                this.safeAreaBorderToggle.OnValueChanged(e => AutoScreenSettings.safeAreaBorder.enabled = e.newValue);
+                this.safeAreaBorderToggle.RegisterValueChangedCallback(e => AutoScreenSettings.safeAreaBorder.enabled = e.newValue);
 
                 this.window.Add(deviceFrameToggle);
                 this.window.Add(safeAreaBorderToggle);
