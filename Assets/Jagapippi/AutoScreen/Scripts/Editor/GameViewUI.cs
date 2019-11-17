@@ -22,11 +22,12 @@ namespace Jagapippi.AutoScreen
             OnScreenChanged(CurrentGameViewScreen.value);
         }
 
-        private static VisualElement GetRoot() => GameViewProxy.instance.GetRootVisualContainer();
+        private static VisualElement GetRoot() => GameViewProxy.instance.GetRootVisualElement();
+        private static VisualElement root;
 
         private static void OnOpen()
         {
-            var root = GetRoot();
+            root = GetRoot();
 
             if (gearImage.image.parent == null)
             {
@@ -64,6 +65,8 @@ namespace Jagapippi.AutoScreen
 
         private static void OnClose()
         {
+            root.Remove(gearImage.image);
+            root.Remove(settingsWindow.window);
         }
 
         private static void OnScreenChanged(GameViewScreen screen)
