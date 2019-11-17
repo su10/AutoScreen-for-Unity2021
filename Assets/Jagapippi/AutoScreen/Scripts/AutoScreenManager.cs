@@ -75,7 +75,7 @@ namespace Jagapippi.AutoScreen
 
         void Update()
         {
-            if (this.IsInHierarchy() == false) return;
+            if (this.IsInPrefabAsset() || this.IsInPrefabStage()) return;
 
             if (this.gameObject.hideFlags != _hideFlags)
             {
