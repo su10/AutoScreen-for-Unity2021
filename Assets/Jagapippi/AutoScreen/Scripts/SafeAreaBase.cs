@@ -25,7 +25,7 @@ namespace Jagapippi.AutoScreen
             }
         }
 
-        protected virtual void ResetRect()
+        public virtual void ResetRect()
         {
             this.rectTransform.sizeDelta = Vector3.zero;
             this.rectTransform.anchoredPosition = Vector3.zero;

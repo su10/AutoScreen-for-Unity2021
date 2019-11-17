@@ -22,7 +22,7 @@ namespace Jagapippi.AutoScreen
             set { _padding = value; }
         }
 
-        protected override void ResetRect()
+        public override void ResetRect()
         {
             base.ResetRect();
 

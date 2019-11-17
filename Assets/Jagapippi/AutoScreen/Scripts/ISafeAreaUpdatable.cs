@@ -2,6 +2,7 @@
 {
     public interface ISafeAreaUpdatable
     {
+        void ResetRect();
         void UpdateRect();
     }
 }
