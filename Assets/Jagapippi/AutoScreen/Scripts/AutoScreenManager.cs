@@ -25,13 +25,7 @@ namespace Jagapippi.AutoScreen
         {
             CurrentGameViewScreen.changed += screen => _Instance = FindOrInstantiate();
             EditorSceneManager.sceneClosed += _ => _Instance = FindOrInstantiate();
-            EditorApplication.playModeStateChanged += mode =>
-            {
-                if (PrefabUtility.GetPrefabInstanceStatus(Instance) == PrefabInstanceStatus.Connected) return;
-
-                DestroyImmediate(Instance.gameObject);
-                _Instance = Instantiate();
-            };
+            EditorApplication.playModeStateChanged += mode => _Instance = FindOrInstantiate();
         }
 
         private static AutoScreenManager FindOrInstantiate()
@@ -72,6 +66,27 @@ namespace Jagapippi.AutoScreen
         #endregion
 
         [SerializeField] private HideFlags _hideFlags = HideFlags.HideAndDontSave;
+
+        void Start()
+        {
+            if (this.IsInHierarchy() == false) return;
+
+            foreach (var instance in Resources.FindObjectsOfTypeAll<AutoScreenManager>())
+            {
+                if (instance.IsInPrefabAsset()) continue;
+                if (instance.IsInPrefabStage()) continue;
+                if (instance == this) continue;
+
+                if (EditorApplication.isPlaying)
+                {
+                    Destroy(instance.gameObject);
+                }
+                else
+                {
+                    DestroyImmediate(instance.gameObject);
+                }
+            }
+        }
 
         void Update()
         {
