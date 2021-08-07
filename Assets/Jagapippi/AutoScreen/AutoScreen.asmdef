@@ -1,12 +1,15 @@
 {
     "name": "AutoScreen",
-    "references": [],
-    "optionalUnityReferences": [],
+    "references": [
+        "GUID:4e3d788a04c14f749821b3416e12f019"
+    ],
     "includePlatforms": [],
     "excludePlatforms": [],
     "allowUnsafeCode": false,
     "overrideReferences": false,
     "precompiledReferences": [],
     "autoReferenced": true,
-    "defineConstraints": []
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
 }

@@ -12,7 +12,19 @@ namespace Jagapippi.AutoScreen
     public abstract class SafeAreaBase : MonoBehaviour, ISafeAreaUpdatable
     {
         private RectTransform _rectTransform;
-        protected RectTransform rectTransform => _rectTransform ?? (_rectTransform = this.GetComponent<RectTransform>());
+
+        protected RectTransform rectTransform
+        {
+            get
+            {
+                if (_rectTransform == null)
+                {
+                    _rectTransform = this.GetComponent<RectTransform>();
+                }
+
+                return _rectTransform;
+            }
+        }
 
         void Reset()
         {
@@ -42,7 +54,11 @@ namespace Jagapippi.AutoScreen
 
         void OnEnable()
         {
-            GameViewEvent.resolutionChanged += this.OnResolutionChanged;
+            SimulatorWindowEvent.onOpen += this.SetDirty;
+            SimulatorWindowEvent.onClose += this.SetDirty;
+            SimulatorWindowEvent.onFocus += this.SetDirty;
+            SimulatorWindowEvent.onLostFocus += this.SetDirty;
+            Unity.DeviceSimulator.DeviceSimulatorCallbacks.OnDeviceChange += this.SetDirty;
             EditorSceneManager.sceneSaving += this.OnSceneSaving;
             EditorSceneManager.sceneSaved += this.OnSceneSaved;
             PrefabStage.prefabSaving += this.OnPrefabSaving;
@@ -53,7 +69,11 @@ namespace Jagapippi.AutoScreen
 
         void OnDisable()
         {
-            GameViewEvent.resolutionChanged -= this.OnResolutionChanged;
+            SimulatorWindowEvent.onOpen -= this.SetDirty;
+            SimulatorWindowEvent.onClose -= this.SetDirty;
+            SimulatorWindowEvent.onFocus -= this.SetDirty;
+            SimulatorWindowEvent.onLostFocus -= this.SetDirty;
+            Unity.DeviceSimulator.DeviceSimulatorCallbacks.OnDeviceChange -= this.SetDirty;
             EditorSceneManager.sceneSaving -= this.OnSceneSaving;
             EditorSceneManager.sceneSaved -= this.OnSceneSaved;
             PrefabStage.prefabSaving -= this.OnPrefabSaving;
@@ -62,7 +82,6 @@ namespace Jagapippi.AutoScreen
             this.UnlockRect();
         }
 
-        private void OnResolutionChanged(GameViewSize size) => this.TryUpdateRect();
         private void OnSceneSaving(Scene scene, string path) => this.TryResetRect();
         private void OnSceneSaved(Scene scene) => this.TryUpdateRect();
         private void OnPrefabSaving(GameObject prefabContentsRoot) => this.TryResetRect();
@@ -79,8 +98,9 @@ namespace Jagapippi.AutoScreen
         }
 
         private bool _isDirty;
+        private void SetDirty() => _isDirty = true;
 
-        void OnValidate() => _isDirty = true;
+        void OnValidate() => this.SetDirty();
 
         void Update()
         {
