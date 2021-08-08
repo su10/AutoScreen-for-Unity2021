@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 #if UNITY_EDITOR
+using UnityEditor;
 using UnityEditor.Experimental.SceneManagement;
 using UnityEditor.SceneManagement;
 #endif
@@ -65,6 +66,7 @@ namespace Jagapippi.AutoScreen
             PrefabStage.prefabSaved += this.OnPrefabSaved;
 
             this.LockRect();
+            this.TryUpdateRect();
         }
 
         void OnDisable()
@@ -98,21 +100,40 @@ namespace Jagapippi.AutoScreen
         }
 
         private bool _isDirty;
+
         private void SetDirty() => _isDirty = true;
 
         void OnValidate() => this.SetDirty();
 
-        void Update()
+        void OnGUI()
         {
             if (_isDirty == false) return;
 
             _isDirty = false;
-            this.UpdateRect();
+            this.TryUpdateRect();
         }
 #endif
-        void Start() => this.UpdateRect();
+        void Start() => this.SetDirty();
 
         public void UpdateRect() => this.UpdateRect(Screen.safeArea, Screen.width, Screen.height);
         public abstract void UpdateRect(Rect safeArea, int width, int height);
     }
+
+#if UNITY_EDITOR
+    [CustomEditor(typeof(SafeAreaBase), true)]
+    public class SafeAreaBaseEditor : Editor
+    {
+        public override void OnInspectorGUI()
+        {
+            base.OnInspectorGUI();
+
+            var safeArea = this.target as SafeAreaBase;
+
+            if (GUILayout.Button("Update Rect"))
+            {
+                safeArea.UpdateRect();
+            }
+        }
+    }
+#endif
 }

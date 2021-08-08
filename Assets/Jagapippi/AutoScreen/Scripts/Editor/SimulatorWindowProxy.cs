@@ -10,7 +10,6 @@ namespace Jagapippi.AutoScreen
     public static class SimulatorWindowProxy
     {
         private static readonly Type SimulatorWindow;
-        private static readonly FieldInfo SimulationStateInfo;
         private static readonly FieldInfo PlayModeViewsFieldInfo;
 
         // NOTE: なぜか宣言時に初期化するとアセンブリが参照できない
@@ -18,10 +17,12 @@ namespace Jagapippi.AutoScreen
         {
             SimulatorWindow = AppDomain.CurrentDomain.GetAssemblies()
                 .Where(assembly => assembly.GetName().Name == "Unity.DeviceSimulator.Editor")
+#if DEVICE_SIMULATOR_3_OR_NEWER
+                .Select(assembly => assembly.GetType("UnityEditor.DeviceSimulation.SimulatorWindow"))
+#else
                 .Select(assembly => assembly.GetType("Unity.DeviceSimulator.SimulatorWindow"))
+#endif
                 .First();
-
-            SimulationStateInfo = SimulatorWindow.GetField("m_State", BindingFlags.Instance | BindingFlags.NonPublic);
 
             PlayModeViewsFieldInfo = Assembly.Load("UnityEditor.dll")
                 .GetType("UnityEditor.PlayModeView")
@@ -47,18 +48,8 @@ namespace Jagapippi.AutoScreen
             }
         }
 
-        internal static EditorWindow instance => EditorWindow.GetWindow(SimulatorWindow, false, "Simulator", false);
         public static bool isOpen { get; private set; }
         public static bool hasFocus => (isOpen && EditorWindow.focusedWindow && (EditorWindow.focusedWindow.GetType() == SimulatorWindow));
-
-        public static SimulationState state => (SimulationState) SimulationStateInfo.GetValue(instance);
-        public static bool enabled => isOpen && (state == SimulationState.Enabled);
-    }
-
-    public enum SimulationState
-    {
-        Enabled,
-        Disabled,
     }
 }
 #endif
