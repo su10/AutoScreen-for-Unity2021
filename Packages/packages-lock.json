@@ -1,5 +1,13 @@
 {
   "dependencies": {
+    "com.jagapippi.auto-screen": {
+      "version": "file:com.jagapippi.auto-screen",
+      "depth": 0,
+      "source": "embedded",
+      "dependencies": {
+        "com.unity.device-simulator": "2.2.4-preview"
+      }
+    },
     "com.unity.2d.sprite": {
       "version": "1.0.0",
       "depth": 0,

@@ -22,8 +22,8 @@ This is done by transforming the RectTransform, but the changes are not saved in
 1. Open the Package Manager
 1. Press \[＋▼\] button and click `Add package from git URL...`
 1. Enter the following:
-  * https://github.com/su10/AutoScreen-for-Device-Simulator.git?path=Assets/Jagapippi/AutoScreen
+  * https://github.com/su10/AutoScreen-for-Device-Simulator.git?path=Packages/com.jagapippi.auto-screen
 
 or add a following line to `dependencies` field of your Packages/manifest.json.
 
-* `"com.jagapippi.auto-screen": "https://github.com/su10/AutoScreen-for-Device-Simulator.git?path=Assets/Jagapippi/AutoScreen"`
+* `"com.jagapippi.auto-screen": "https://github.com/su10/AutoScreen-for-Device-Simulator.git?path=Packages/com.jagapippi.auto-screen"`
