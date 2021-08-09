@@ -113,8 +113,6 @@ namespace Jagapippi.AutoScreen
             this.TryUpdateRect();
         }
 #endif
-        void Start() => this.SetDirty();
-
         public void UpdateRect() => this.UpdateRect(Screen.safeArea, Screen.width, Screen.height);
         public abstract void UpdateRect(Rect safeArea, int width, int height);
     }
