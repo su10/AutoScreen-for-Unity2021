@@ -7,21 +7,21 @@ namespace Jagapippi.AutoScreen
     public class RuntimeSafeAreaUpdater : MonoBehaviour
     {
         private ISafeAreaUpdatable _target;
-        private ScreenOrientation _orientation;
+        private Rect _safeArea;
 
         void Start()
         {
             _target = this.GetComponent<ISafeAreaUpdatable>();
 
-            _orientation = Screen.orientation;
+            _safeArea = Screen.safeArea;
             _target.UpdateRect();
         }
 
         void Update()
         {
-            if (_orientation == Screen.orientation) return;
+            if (_safeArea == Screen.safeArea) return;
 
-            _orientation = Screen.orientation;
+            _safeArea = Screen.safeArea;
             _target.UpdateRect();
         }
     }
