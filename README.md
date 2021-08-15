@@ -2,6 +2,8 @@
 
 AutoScreen provides a smart solution for Safe Area in Unity.
 
+![Demo](https://user-images.githubusercontent.com/47236995/129486823-d767ad45-5f12-4799-a747-820441f437ff.gif)
+
 ## Description
 
 Unity's Device Simulator has a lot of information about Safe Area, but there is no feature to use them to support Safe Areas or to preview them comfortably in the Unity Editor.
