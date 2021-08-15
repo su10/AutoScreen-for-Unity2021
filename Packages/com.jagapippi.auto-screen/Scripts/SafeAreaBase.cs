@@ -57,8 +57,7 @@ namespace Jagapippi.AutoScreen
         {
             SimulatorWindowEvent.onOpen += this.SetDirty;
             SimulatorWindowEvent.onClose += this.SetDirty;
-            SimulatorWindowEvent.onFocus += this.SetDirty;
-            SimulatorWindowEvent.onLostFocus += this.SetDirty;
+            SimulatorWindowEvent.onOrientationChanged += this.OnOrientationChanged;
             Unity.DeviceSimulator.DeviceSimulatorCallbacks.OnDeviceChange += this.SetDirty;
             EditorSceneManager.sceneSaving += this.OnSceneSaving;
             EditorSceneManager.sceneSaved += this.OnSceneSaved;
@@ -73,8 +72,7 @@ namespace Jagapippi.AutoScreen
         {
             SimulatorWindowEvent.onOpen -= this.SetDirty;
             SimulatorWindowEvent.onClose -= this.SetDirty;
-            SimulatorWindowEvent.onFocus -= this.SetDirty;
-            SimulatorWindowEvent.onLostFocus -= this.SetDirty;
+            SimulatorWindowEvent.onOrientationChanged -= this.OnOrientationChanged;
             Unity.DeviceSimulator.DeviceSimulatorCallbacks.OnDeviceChange -= this.SetDirty;
             EditorSceneManager.sceneSaving -= this.OnSceneSaving;
             EditorSceneManager.sceneSaved -= this.OnSceneSaved;
@@ -82,6 +80,14 @@ namespace Jagapippi.AutoScreen
             PrefabStage.prefabSaved -= this.OnPrefabSaved;
 
             this.UnlockRect();
+        }
+
+        private void OnOrientationChanged(ScreenOrientation orientation)
+        {
+            if (EditorApplication.isPlaying == false)
+            {
+                this.SetDirty();
+            }
         }
 
         private void OnSceneSaving(Scene scene, string path) => this.TryResetRect();
@@ -103,7 +109,13 @@ namespace Jagapippi.AutoScreen
 
         private void SetDirty() => _isDirty = true;
 
-        void OnValidate() => this.SetDirty();
+        void OnValidate()
+        {
+            if (EditorApplication.isPlaying == false)
+            {
+                this.SetDirty();
+            }
+        }
 
         void OnGUI()
         {
@@ -111,6 +123,11 @@ namespace Jagapippi.AutoScreen
 
             _isDirty = false;
             this.TryUpdateRect();
+
+            if (EditorApplication.isPlaying == false)
+            {
+                SimulatorWindowProxy.Reload();
+            }
         }
 #endif
         void Start()
@@ -139,6 +156,7 @@ namespace Jagapippi.AutoScreen
             if (GUILayout.Button("Update Rect"))
             {
                 safeArea.UpdateRect();
+                SimulatorWindowProxy.Reload();
             }
         }
     }

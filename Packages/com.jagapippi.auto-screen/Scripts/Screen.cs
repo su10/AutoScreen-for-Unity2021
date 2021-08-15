@@ -1,4 +1,4 @@
-﻿#if UNITY_EDITOR && DEVICE_SIMULATOR_3_OR_NEWER
+﻿#if UNITY_EDITOR
 using UnityEngine;
 using UnityScreen = UnityEngine.Screen;
 

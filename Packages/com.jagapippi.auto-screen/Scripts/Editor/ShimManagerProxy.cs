@@ -1,4 +1,4 @@
-#if UNITY_EDITOR && DEVICE_SIMULATOR_3_OR_NEWER
+#if UNITY_EDITOR
 using System;
 using System.Linq;
 using System.Reflection;
@@ -18,7 +18,11 @@ namespace Jagapippi.AutoScreen
         {
             ScreenSimulation = AppDomain.CurrentDomain.GetAssemblies()
                 .Where(assembly => assembly.GetName().Name == "Unity.DeviceSimulator.Editor")
+#if DEVICE_SIMULATOR_3_OR_NEWER
                 .Select(assembly => assembly.GetType("UnityEditor.DeviceSimulation.ScreenSimulation"))
+#else
+                .Select(assembly => assembly.GetType("Unity.DeviceSimulator.ScreenSimulation"))
+#endif
                 .First();
             WidthPropertyInfo = ScreenSimulation.GetProperty("Width");
             HeightPropertyInfo = ScreenSimulation.GetProperty("Height");

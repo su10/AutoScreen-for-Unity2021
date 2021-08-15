@@ -1,6 +1,7 @@
 ﻿#if UNITY_EDITOR
 using System;
 using UnityEditor;
+using UnityEngine;
 
 namespace Jagapippi.AutoScreen
 {
@@ -10,15 +11,18 @@ namespace Jagapippi.AutoScreen
         public static event Action onClose;
         public static event Action onFocus;
         public static event Action onLostFocus;
+        public static event Action<ScreenOrientation> onOrientationChanged;
 
         private static bool _isOpen;
         private static bool _hasFocus;
+        private static ScreenOrientation _orientation;
 
         [InitializeOnLoadMethod]
         static void Initialize()
         {
             _isOpen = SimulatorWindowProxy.isOpen;
             _hasFocus = SimulatorWindowProxy.hasFocus;
+            _orientation = Screen.orientation;
 
             EditorApplication.update -= OnUpdate;
             EditorApplication.update += OnUpdate;
@@ -48,6 +52,12 @@ namespace Jagapippi.AutoScreen
             {
                 onLostFocus?.Invoke();
                 _hasFocus = false;
+            }
+
+            if (_orientation != Screen.orientation)
+            {
+                onOrientationChanged?.Invoke(Screen.orientation);
+                _orientation = Screen.orientation;
             }
         }
     }
