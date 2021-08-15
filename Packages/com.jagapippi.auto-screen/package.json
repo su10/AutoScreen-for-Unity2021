@@ -1,6 +1,6 @@
 {
   "name": "com.jagapippi.auto-screen",
-  "version": "2.0.2",
+  "version": "2.0.3",
   "displayName": "AutoScreen for Device Simulator",
   "description": "This plugin provide a smart solution for Safe Area.\nBy using the provided components, you can quickly check the safe area in Device Simulator.\nThis is achieved by transforming the RectTransform, but the changes are not saved, so version control systems such as git will not make any difference.",
   "unity": "2019.4",
