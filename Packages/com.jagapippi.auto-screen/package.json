@@ -1,12 +1,12 @@
 {
   "name": "com.jagapippi.auto-screen",
-  "version": "2.0.3",
-  "displayName": "AutoScreen for Device Simulator",
+  "version": "3.0.0",
+  "displayName": "AutoScreen for Unity2021",
   "description": "This plugin provide a smart solution for Safe Area.\nBy using the provided components, you can quickly check the safe area in Device Simulator.\nThis is achieved by transforming the RectTransform, but the changes are not saved, so version control systems such as git will not make any difference.",
-  "unity": "2019.4",
+  "unity": "2021.1",
   "license": "MIT",
   "licensesUrl": "https://github.com/su10/AutoScreen-for-Device-Simulator/blob/main/LICENSE",
-  "documentationUrl": "https://github.com/su10/AutoScreen-for-Device-Simulator",
+  "documentationUrl": "https://github.com/su10/AutoScreen-for-Unity2021",
   "keywords": [
     "safearea"
   ],
@@ -16,7 +16,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/su10/AutoScreen-for-Device-Simulator.git"
+    "url": "git+https://github.com/su10/AutoScreen-for-Unity2021.git"
   },
   "samples": [
     {
