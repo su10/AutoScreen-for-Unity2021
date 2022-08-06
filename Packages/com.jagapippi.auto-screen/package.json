@@ -7,9 +7,6 @@
   "license": "MIT",
   "licensesUrl": "https://github.com/su10/AutoScreen-for-Device-Simulator/blob/main/LICENSE",
   "documentationUrl": "https://github.com/su10/AutoScreen-for-Device-Simulator",
-  "dependencies": {
-    "com.unity.device-simulator": "2.2.4-preview"
-  },
   "keywords": [
     "safearea"
   ],
