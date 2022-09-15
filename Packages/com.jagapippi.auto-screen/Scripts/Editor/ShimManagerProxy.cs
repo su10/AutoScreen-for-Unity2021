@@ -1,3 +1,7 @@
+#if !UNITY_2021_1 && !UNITY_2021_2_0 && !UNITY_2021_2_1 && !UNITY_2021_2_2 && !UNITY_2021_2_3 && !UNITY_2021_2_4 && !UNITY_2021_2_5 && !UNITY_2021_2_6 && !UNITY_2021_2_7
+#define UNITY_2021_2_8_OR_NEWER
+#endif
+
 #if UNITY_EDITOR
 using System;
 using System.Linq;
@@ -23,7 +27,7 @@ namespace Jagapippi.AutoScreen
                 .First();
 
             WidthPropertyInfo = screenSimulationType.GetProperty(
-#if UNITY_2021_3_OR_NEWER || UNITY_2021_2_19 || UNITY_2021_2_18 || UNITY_2021_2_17 || UNITY_2021_2_16 || UNITY_2021_2_15 || UNITY_2021_2_14 || UNITY_2021_2_13 || UNITY_2021_2_12 || UNITY_2021_2_11 || UNITY_2021_2_10 || UNITY_2021_2_9 || UNITY_2021_2_8
+#if UNITY_2021_2_8_OR_NEWER
                 "width"
 #else
                 "Width"
@@ -31,7 +35,7 @@ namespace Jagapippi.AutoScreen
             );
 
             HeightPropertyInfo = screenSimulationType.GetProperty(
-#if UNITY_2021_3_OR_NEWER || UNITY_2021_2_19 || UNITY_2021_2_18 || UNITY_2021_2_17 || UNITY_2021_2_16 || UNITY_2021_2_15 || UNITY_2021_2_14 || UNITY_2021_2_13 || UNITY_2021_2_12 || UNITY_2021_2_11 || UNITY_2021_2_10 || UNITY_2021_2_9 || UNITY_2021_2_8
+#if UNITY_2021_2_8_OR_NEWER
                 "height"
 #else
                 "Height"
