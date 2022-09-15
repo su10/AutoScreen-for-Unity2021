@@ -14,6 +14,9 @@ namespace Jagapippi.AutoScreen
 
         private static readonly Type SimulatorWindow;
         private static readonly FieldInfo PlayModeViewsFieldInfo;
+#if !UNITY_2021_1
+        private static readonly MethodInfo RepaintImmediatelyMethodInfo;
+#endif
 
         // NOTE: なぜか宣言時に初期化するとアセンブリが参照できない
         static SimulatorWindowProxy()
@@ -26,6 +29,10 @@ namespace Jagapippi.AutoScreen
             PlayModeViewsFieldInfo = Assembly.Load("UnityEditor.dll")
                 .GetType("UnityEditor.PlayModeView")
                 .GetField("s_PlayModeViews", BindingFlags.Static | BindingFlags.NonPublic);
+
+#if !UNITY_2021_1
+            RepaintImmediatelyMethodInfo = typeof(EditorWindow).GetMethod("RepaintImmediately", BindingFlags.Instance | BindingFlags.NonPublic);
+#endif
 
             EditorApplication.update -= OnUpdate;
             EditorApplication.update += OnUpdate;
@@ -52,23 +59,38 @@ namespace Jagapippi.AutoScreen
         public static bool isOpen { get; private set; }
         public static bool hasFocus => (isOpen && EditorWindow.focusedWindow && (EditorWindow.focusedWindow.GetType() == SimulatorWindow));
 
+        private static bool _shouldBeRepaint;
+#if !UNITY_2021_1
+        public static void RepaintWithDelay() => _shouldBeRepaint = true;
+#endif
+
         public static void Repaint()
         {
             if (isOpen == false) return;
 
             var playModeViews = (IEnumerable)PlayModeViewsFieldInfo.GetValue(null);
 
-            foreach (var playModeView in playModeViews)
+            foreach (EditorWindow playModeView in playModeViews)
             {
-                if ((UnityEngine.Object)playModeView == null) continue;
+                if (playModeView == null) continue;
                 if (playModeView.GetType() != SimulatorWindow) continue;
 
-                ((EditorWindow)playModeView).Repaint();
+#if UNITY_2021_1
+                playModeView.Repaint();
+#else
+                RepaintImmediately(playModeView);
+#endif
             }
         }
 
-        private static bool _shouldBeRepaint;
-        public static void RepaintWithDelay() => _shouldBeRepaint = true;
+#if !UNITY_2021_1
+        private static void RepaintImmediately(EditorWindow window)
+        {
+            if (window == null) return;
+
+            RepaintImmediatelyMethodInfo.Invoke(window, null);
+        }
+#endif
     }
 }
 #endif
