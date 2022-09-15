@@ -35,7 +35,7 @@ namespace Jagapippi.AutoScreen
             {
                 var activeScreenShim = ActiveScreenShimFieldInfo.GetValue(null);
                 if (activeScreenShim == null) return UnityScreen.width;
-                return (int) WidthPropertyInfo.GetValue(activeScreenShim);
+                return (int)WidthPropertyInfo.GetValue(activeScreenShim);
             }
         }
 
@@ -46,7 +46,7 @@ namespace Jagapippi.AutoScreen
             {
                 var activeScreenShim = ActiveScreenShimFieldInfo.GetValue(null);
                 if (activeScreenShim == null) return UnityScreen.height;
-                return (int) HeightPropertyInfo.GetValue(activeScreenShim);
+                return (int)HeightPropertyInfo.GetValue(activeScreenShim);
             }
         }
     }

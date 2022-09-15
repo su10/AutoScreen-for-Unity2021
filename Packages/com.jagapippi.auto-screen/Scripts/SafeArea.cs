@@ -14,7 +14,7 @@ namespace Jagapippi.AutoScreen
             Right = 1 << 3,
         }
 
-        [SerializeField, EnumFlags] private Padding _padding = (Padding) Enum.Parse(typeof(Padding), (-1).ToString());
+        [SerializeField, EnumFlags] private Padding _padding = (Padding)Enum.Parse(typeof(Padding), (-1).ToString());
 
         public Padding padding
         {

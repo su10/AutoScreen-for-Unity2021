@@ -45,13 +45,13 @@ namespace Jagapippi.AutoScreen
 
         private static void OnUpdate()
         {
-            var playModeViews = (IEnumerable) PlayModeViewsFieldInfo.GetValue(null);
+            var playModeViews = (IEnumerable)PlayModeViewsFieldInfo.GetValue(null);
 
             isOpen = false;
 
             foreach (var playModeView in playModeViews)
             {
-                if ((UnityEngine.Object) playModeView == null) continue;
+                if ((UnityEngine.Object)playModeView == null) continue;
                 if (playModeView.GetType() != SimulatorWindow) continue;
 
                 isOpen = true;
@@ -72,14 +72,14 @@ namespace Jagapippi.AutoScreen
         {
             if (isOpen == false) return;
 
-            var playModeViews = (IEnumerable) PlayModeViewsFieldInfo.GetValue(null);
+            var playModeViews = (IEnumerable)PlayModeViewsFieldInfo.GetValue(null);
 
             foreach (var playModeView in playModeViews)
             {
-                if ((UnityEngine.Object) playModeView == null) continue;
+                if ((UnityEngine.Object)playModeView == null) continue;
                 if (playModeView.GetType() != SimulatorWindow) continue;
 
-                ((EditorWindow) playModeView).Repaint();
+                ((EditorWindow)playModeView).Repaint();
             }
         }
 
