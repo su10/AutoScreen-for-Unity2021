@@ -46,7 +46,7 @@ namespace Jagapippi.AutoScreen
             SimulatorWindowEvent.onOpen += this.SetDirty;
             SimulatorWindowEvent.onClose += this.SetDirty;
             SimulatorWindowEvent.onOrientationChanged += this.OnOrientationChanged;
-            // Unity.DeviceSimulator.DeviceSimulatorCallbacks.OnDeviceChange += this.SetDirty;
+            ShimManagerEvent.onActiveShimChanged += this.SetDirty;
             EditorSceneManager.sceneSaving += this.OnSceneSaving;
             EditorSceneManager.sceneSaved += this.OnSceneSaved;
             PrefabStage.prefabSaving += this.OnPrefabSaving;
@@ -61,7 +61,7 @@ namespace Jagapippi.AutoScreen
             SimulatorWindowEvent.onOpen -= this.SetDirty;
             SimulatorWindowEvent.onClose -= this.SetDirty;
             SimulatorWindowEvent.onOrientationChanged -= this.OnOrientationChanged;
-            // Unity.DeviceSimulator.DeviceSimulatorCallbacks.OnDeviceChange -= this.SetDirty;
+            ShimManagerEvent.onActiveShimChanged -= this.SetDirty;
             EditorSceneManager.sceneSaving -= this.OnSceneSaving;
             EditorSceneManager.sceneSaved -= this.OnSceneSaved;
             PrefabStage.prefabSaving -= this.OnPrefabSaving;

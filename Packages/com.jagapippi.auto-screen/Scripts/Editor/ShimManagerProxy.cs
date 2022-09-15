@@ -10,28 +10,30 @@ namespace Jagapippi.AutoScreen
     {
         private const string AssemblyName = "UnityEditor.DeviceSimulatorModule";
 
-        private static readonly Type ShimManager = Assembly.Load("UnityEngine.dll").GetType("UnityEngine.ShimManager");
-        private static readonly FieldInfo ActiveScreenShimFieldInfo = ShimManager.GetField("s_ActiveScreenShim", BindingFlags.Static | BindingFlags.NonPublic);
-        private static readonly Type ScreenSimulation;
+        private static readonly Type ShimManagerType = Assembly.Load("UnityEngine.dll").GetType("UnityEngine.ShimManager");
+        private static readonly FieldInfo ActiveScreenShimFieldInfo = ShimManagerType.GetField("s_ActiveScreenShim", BindingFlags.Static | BindingFlags.NonPublic);
         private static readonly PropertyInfo WidthPropertyInfo;
         private static readonly PropertyInfo HeightPropertyInfo;
 
         static ShimManagerProxy()
         {
-            ScreenSimulation = AppDomain.CurrentDomain.GetAssemblies()
+            var screenSimulationType = AppDomain.CurrentDomain.GetAssemblies()
                 .Where(assembly => assembly.GetName().Name == AssemblyName)
                 .Select(assembly => assembly.GetType("UnityEditor.DeviceSimulation.ScreenSimulation"))
                 .First();
-            WidthPropertyInfo = ScreenSimulation.GetProperty("Width");
-            HeightPropertyInfo = ScreenSimulation.GetProperty("Height");
+
+            WidthPropertyInfo = screenSimulationType.GetProperty("Width");
+            HeightPropertyInfo = screenSimulationType.GetProperty("Height");
         }
+
+        public static object GetActiveScreenShim() => ActiveScreenShimFieldInfo.GetValue(null);
 
         // NOTE: ScreenSimulation#widthの値がおかしい場合があるのでScreenSimulation#Widthを参照する
         public static int width
         {
             get
             {
-                var activeScreenShim = ActiveScreenShimFieldInfo.GetValue(null);
+                var activeScreenShim = GetActiveScreenShim();
                 if (activeScreenShim == null) return UnityScreen.width;
                 return (int)WidthPropertyInfo.GetValue(activeScreenShim);
             }
@@ -42,7 +44,7 @@ namespace Jagapippi.AutoScreen
         {
             get
             {
-                var activeScreenShim = ActiveScreenShimFieldInfo.GetValue(null);
+                var activeScreenShim = GetActiveScreenShim();
                 if (activeScreenShim == null) return UnityScreen.height;
                 return (int)HeightPropertyInfo.GetValue(activeScreenShim);
             }
