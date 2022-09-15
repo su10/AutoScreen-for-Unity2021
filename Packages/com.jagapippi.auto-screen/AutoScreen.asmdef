@@ -1,8 +1,7 @@
 {
     "name": "AutoScreen",
-    "references": [
-        "GUID:4e3d788a04c14f749821b3416e12f019"
-    ],
+    "rootNamespace": "",
+    "references": [],
     "includePlatforms": [],
     "excludePlatforms": [],
     "allowUnsafeCode": false,
@@ -10,12 +9,6 @@
     "precompiledReferences": [],
     "autoReferenced": true,
     "defineConstraints": [],
-    "versionDefines": [
-        {
-            "name": "com.unity.device-simulator",
-            "expression": "3.0.0-preview",
-            "define": "DEVICE_SIMULATOR_3_OR_NEWER"
-        }
-    ],
+    "versionDefines": [],
     "noEngineReferences": false
 }

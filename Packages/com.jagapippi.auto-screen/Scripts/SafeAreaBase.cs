@@ -126,7 +126,7 @@ namespace Jagapippi.AutoScreen
 
             if (EditorApplication.isPlaying == false)
             {
-                SimulatorWindowProxy.Reload();
+                SimulatorWindowProxy.Repaint();
             }
         }
 #endif
@@ -156,7 +156,7 @@ namespace Jagapippi.AutoScreen
             if (GUILayout.Button("Update Rect"))
             {
                 safeArea.UpdateRect();
-                SimulatorWindowProxy.Reload();
+                SimulatorWindowProxy.Repaint();
             }
         }
     }
