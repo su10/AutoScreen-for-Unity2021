@@ -22,8 +22,21 @@ namespace Jagapippi.AutoScreen
                 .Select(assembly => assembly.GetType("UnityEditor.DeviceSimulation.ScreenSimulation"))
                 .First();
 
-            WidthPropertyInfo = screenSimulationType.GetProperty("Width");
-            HeightPropertyInfo = screenSimulationType.GetProperty("Height");
+            WidthPropertyInfo = screenSimulationType.GetProperty(
+#if UNITY_2021_3_OR_NEWER || UNITY_2021_2_19 || UNITY_2021_2_18 || UNITY_2021_2_17 || UNITY_2021_2_16 || UNITY_2021_2_15 || UNITY_2021_2_14 || UNITY_2021_2_13 || UNITY_2021_2_12 || UNITY_2021_2_11 || UNITY_2021_2_10 || UNITY_2021_2_9 || UNITY_2021_2_8
+                "width"
+#else
+                "Width"
+#endif
+            );
+
+            HeightPropertyInfo = screenSimulationType.GetProperty(
+#if UNITY_2021_3_OR_NEWER || UNITY_2021_2_19 || UNITY_2021_2_18 || UNITY_2021_2_17 || UNITY_2021_2_16 || UNITY_2021_2_15 || UNITY_2021_2_14 || UNITY_2021_2_13 || UNITY_2021_2_12 || UNITY_2021_2_11 || UNITY_2021_2_10 || UNITY_2021_2_9 || UNITY_2021_2_8
+                "height"
+#else
+                "Height"
+#endif
+            );
         }
 
         public static object GetActiveScreenShim() => ActiveScreenShimFieldInfo.GetValue(null);
