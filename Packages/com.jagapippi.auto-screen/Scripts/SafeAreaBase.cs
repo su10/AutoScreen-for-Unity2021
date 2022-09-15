@@ -13,19 +13,7 @@ namespace Jagapippi.AutoScreen
     public abstract class SafeAreaBase : MonoBehaviour, ISafeAreaUpdatable
     {
         private RectTransform _rectTransform;
-
-        protected RectTransform rectTransform
-        {
-            get
-            {
-                if (_rectTransform == null)
-                {
-                    _rectTransform = this.GetComponent<RectTransform>();
-                }
-
-                return _rectTransform;
-            }
-        }
+        protected RectTransform rectTransform => (_rectTransform != null) ? _rectTransform : _rectTransform = this.GetComponent<RectTransform>();
 
         void Reset()
         {
