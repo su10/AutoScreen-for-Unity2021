@@ -144,10 +144,13 @@ namespace Jagapippi.AutoScreen
 
             var safeArea = this.target as SafeAreaBase;
 
-            if (GUILayout.Button("Update Rect"))
+            using (new EditorGUI.DisabledScope(Application.isPlaying == false))
             {
-                safeArea.UpdateRect();
-                SimulatorWindowProxy.Repaint();
+                if (GUILayout.Button("Update Rect"))
+                {
+                    safeArea.UpdateRect();
+                    SimulatorWindowProxy.Repaint();
+                }
             }
         }
     }
