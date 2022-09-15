@@ -107,15 +107,18 @@ namespace Jagapippi.AutoScreen
 
         void OnGUI()
         {
-            if (_isDirty == false) return;
-
-            _isDirty = false;
-            this.TryUpdateRect();
-
-            if (EditorApplication.isPlaying == false)
+            EditorApplication.delayCall += () =>
             {
-                SimulatorWindowProxy.Repaint();
-            }
+                if (_isDirty == false) return;
+
+                _isDirty = false;
+                this.TryUpdateRect();
+
+                if (EditorApplication.isPlaying == false)
+                {
+                    SimulatorWindowProxy.Repaint();
+                }
+            };
         }
 #endif
         void Start()
