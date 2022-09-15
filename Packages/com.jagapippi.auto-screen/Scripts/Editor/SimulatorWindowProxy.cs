@@ -45,6 +45,8 @@ namespace Jagapippi.AutoScreen
                 isOpen = true;
                 break;
             }
+
+            if (_shouldBeRepaint) Repaint();
         }
 
         public static bool isOpen { get; private set; }
@@ -64,6 +66,9 @@ namespace Jagapippi.AutoScreen
                 ((EditorWindow)playModeView).Repaint();
             }
         }
+
+        private static bool _shouldBeRepaint;
+        public static void RepaintWithDelay() => _shouldBeRepaint = true;
     }
 }
 #endif

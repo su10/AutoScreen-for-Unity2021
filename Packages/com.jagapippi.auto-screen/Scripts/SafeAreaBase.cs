@@ -116,7 +116,11 @@ namespace Jagapippi.AutoScreen
 
                 if (EditorApplication.isPlaying == false)
                 {
+#if UNITY_2021_1
                     SimulatorWindowProxy.Repaint();
+#else
+                    SimulatorWindowProxy.RepaintWithDelay();
+#endif
                 }
             };
         }
