@@ -1,0 +1,95 @@
+﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+	<s:Boolean x:Key="/Default/CodeEditing/Unity/AllowAutomaticRefreshInUnity/@EntryValue">False</s:Boolean>
+	<s:String x:Key="/Default/CodeInspection/Highlighting/InspectionSeverities/=CheckNamespace/@EntryIndexedValue">HINT</s:String>
+	<s:String x:Key="/Default/CodeInspection/Highlighting/InspectionSeverities/=ConvertClosureToMethodGroup/@EntryIndexedValue">DO_NOT_SHOW</s:String>
+	<s:Boolean x:Key="/Default/CodeInspection/Roslyn/LegacySeveritiesMigrated/@EntryValue">True</s:Boolean>
+	<s:String x:Key="/Default/CodeStyle/CodeCleanup/Profiles/=Built_002Din_003A_0020Reformat_0020Code_0020_0026_0020Optimize_0020_0027using_0027_0020directives/@EntryIndexedValue">&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;Profile name="Built-in: Reformat Code &amp;amp; Optimize 'using' directives"&gt;&lt;CppReformatCode&gt;True&lt;/CppReformatCode&gt;&lt;ShaderLabReformatCode&gt;True&lt;/ShaderLabReformatCode&gt;&lt;XAMLCollapseEmptyTags&gt;False&lt;/XAMLCollapseEmptyTags&gt;&lt;XMLReformatCode&gt;True&lt;/XMLReformatCode&gt;&lt;HtmlReformatCode&gt;True&lt;/HtmlReformatCode&gt;&lt;VBReformatCode&gt;True&lt;/VBReformatCode&gt;&lt;CSReformatCode&gt;True&lt;/CSReformatCode&gt;&lt;IDEA_SETTINGS&gt;&amp;lt;profile version="1.0"&amp;gt;
+  &amp;lt;option name="myName" value="Built-in: Reformat Code &amp;amp;amp; Optimize 'using' directives" /&amp;gt;
+  &amp;lt;inspection_tool class="ES6ShorthandObjectProperty" enabled="false" level="INFORMATION" enabled_by_default="false" /&amp;gt;
+  &amp;lt;inspection_tool class="JSArrowFunctionBracesCanBeRemoved" enabled="false" level="INFORMATION" enabled_by_default="false" /&amp;gt;
+  &amp;lt;inspection_tool class="JSPrimitiveTypeWrapperUsage" enabled="false" level="WARNING" enabled_by_default="false" /&amp;gt;
+  &amp;lt;inspection_tool class="JSRemoveUnnecessaryParentheses" enabled="false" level="INFORMATION" enabled_by_default="false" /&amp;gt;
+  &amp;lt;inspection_tool class="JSUnnecessarySemicolon" enabled="false" level="WARNING" enabled_by_default="false" /&amp;gt;
+  &amp;lt;inspection_tool class="TypeScriptExplicitMemberType" enabled="false" level="INFORMATION" enabled_by_default="false" /&amp;gt;
+  &amp;lt;inspection_tool class="UnnecessaryContinueJS" enabled="false" level="WARNING" enabled_by_default="false" /&amp;gt;
+  &amp;lt;inspection_tool class="UnnecessaryLabelJS" enabled="false" level="WARNING" enabled_by_default="false" /&amp;gt;
+  &amp;lt;inspection_tool class="UnnecessaryLabelOnBreakStatementJS" enabled="false" level="WARNING" enabled_by_default="false" /&amp;gt;
+  &amp;lt;inspection_tool class="UnnecessaryLabelOnContinueStatementJS" enabled="false" level="WARNING" enabled_by_default="false" /&amp;gt;
+  &amp;lt;inspection_tool class="UnnecessaryReturnJS" enabled="false" level="WARNING" enabled_by_default="false" /&amp;gt;
+  &amp;lt;inspection_tool class="WrongPropertyKeyValueDelimiter" enabled="false" level="WEAK WARNING" enabled_by_default="false" /&amp;gt;
+&amp;lt;/profile&amp;gt;&lt;/IDEA_SETTINGS&gt;&lt;RIDER_SETTINGS&gt;&amp;lt;profile&amp;gt;
+  &amp;lt;Language id="AppleScript"&amp;gt;
+    &amp;lt;Reformat&amp;gt;true&amp;lt;/Reformat&amp;gt;
+  &amp;lt;/Language&amp;gt;
+  &amp;lt;Language id="CSS"&amp;gt;
+    &amp;lt;Rearrange&amp;gt;false&amp;lt;/Rearrange&amp;gt;
+    &amp;lt;Reformat&amp;gt;true&amp;lt;/Reformat&amp;gt;
+  &amp;lt;/Language&amp;gt;
+  &amp;lt;Language id="EditorConfig"&amp;gt;
+    &amp;lt;Reformat&amp;gt;true&amp;lt;/Reformat&amp;gt;
+  &amp;lt;/Language&amp;gt;
+  &amp;lt;Language id="HTML"&amp;gt;
+    &amp;lt;Rearrange&amp;gt;false&amp;lt;/Rearrange&amp;gt;
+    &amp;lt;Reformat&amp;gt;true&amp;lt;/Reformat&amp;gt;
+    &amp;lt;OptimizeImports&amp;gt;false&amp;lt;/OptimizeImports&amp;gt;
+  &amp;lt;/Language&amp;gt;
+  &amp;lt;Language id="HTTP Request"&amp;gt;
+    &amp;lt;Reformat&amp;gt;true&amp;lt;/Reformat&amp;gt;
+  &amp;lt;/Language&amp;gt;
+  &amp;lt;Language id="Handlebars"&amp;gt;
+    &amp;lt;Reformat&amp;gt;true&amp;lt;/Reformat&amp;gt;
+  &amp;lt;/Language&amp;gt;
+  &amp;lt;Language id="Ini"&amp;gt;
+    &amp;lt;Reformat&amp;gt;true&amp;lt;/Reformat&amp;gt;
+  &amp;lt;/Language&amp;gt;
+  &amp;lt;Language id="JSON"&amp;gt;
+    &amp;lt;Reformat&amp;gt;true&amp;lt;/Reformat&amp;gt;
+  &amp;lt;/Language&amp;gt;
+  &amp;lt;Language id="Jade"&amp;gt;
+    &amp;lt;Reformat&amp;gt;true&amp;lt;/Reformat&amp;gt;
+  &amp;lt;/Language&amp;gt;
+  &amp;lt;Language id="JavaScript"&amp;gt;
+    &amp;lt;Rearrange&amp;gt;false&amp;lt;/Rearrange&amp;gt;
+    &amp;lt;Reformat&amp;gt;true&amp;lt;/Reformat&amp;gt;
+    &amp;lt;OptimizeImports&amp;gt;false&amp;lt;/OptimizeImports&amp;gt;
+  &amp;lt;/Language&amp;gt;
+  &amp;lt;Language id="Markdown"&amp;gt;
+    &amp;lt;Reformat&amp;gt;true&amp;lt;/Reformat&amp;gt;
+  &amp;lt;/Language&amp;gt;
+  &amp;lt;Language id="Properties"&amp;gt;
+    &amp;lt;Reformat&amp;gt;true&amp;lt;/Reformat&amp;gt;
+  &amp;lt;/Language&amp;gt;
+  &amp;lt;Language id="RELAX-NG"&amp;gt;
+    &amp;lt;Reformat&amp;gt;true&amp;lt;/Reformat&amp;gt;
+  &amp;lt;/Language&amp;gt;
+  &amp;lt;Language id="SQL"&amp;gt;
+    &amp;lt;Reformat&amp;gt;true&amp;lt;/Reformat&amp;gt;
+  &amp;lt;/Language&amp;gt;
+  &amp;lt;Language id="XML"&amp;gt;
+    &amp;lt;Rearrange&amp;gt;false&amp;lt;/Rearrange&amp;gt;
+    &amp;lt;Reformat&amp;gt;true&amp;lt;/Reformat&amp;gt;
+    &amp;lt;OptimizeImports&amp;gt;false&amp;lt;/OptimizeImports&amp;gt;
+  &amp;lt;/Language&amp;gt;
+  &amp;lt;Language id="yaml"&amp;gt;
+    &amp;lt;Reformat&amp;gt;true&amp;lt;/Reformat&amp;gt;
+  &amp;lt;/Language&amp;gt;
+&amp;lt;/profile&amp;gt;&lt;/RIDER_SETTINGS&gt;&lt;CSOptimizeUsings&gt;&lt;OptimizeUsings&gt;True&lt;/OptimizeUsings&gt;&lt;/CSOptimizeUsings&gt;&lt;/Profile&gt;</s:String>
+	<s:String x:Key="/Default/CodeStyle/CodeCleanup/RecentlyUsedProfile/@EntryValue">Built-in: Reformat Code &amp; Optimize 'using' directives</s:String>
+	<s:String x:Key="/Default/CodeStyle/CodeCleanup/SilentCleanupProfile/@EntryValue">Built-in: Reformat Code &amp; Optimize 'using' directives</s:String>
+	<s:Boolean x:Key="/Default/CodeStyle/CodeFormatting/CSharpFormat/LINE_FEED_AT_FILE_END/@EntryValue">True</s:Boolean>
+	<s:Boolean x:Key="/Default/CodeStyle/CodeFormatting/CSharpFormat/WRAP_LINES/@EntryValue">False</s:Boolean>
+	<s:Boolean x:Key="/Default/CodeStyle/Generate/=EqualityMembers/@KeyIndexDefined">True</s:Boolean>
+	<s:String x:Key="/Default/CodeStyle/Generate/=EqualityMembers/Options/=EqualityOperators/@EntryIndexedValue">False</s:String>
+	<s:Boolean x:Key="/Default/CodeStyle/Generate/=Implementations/@KeyIndexDefined">True</s:Boolean>
+	<s:String x:Key="/Default/CodeStyle/Generate/=Implementations/Options/=Async/@EntryIndexedValue">False</s:String>
+	<s:String x:Key="/Default/CodeStyle/Generate/=Implementations/Options/=Mutable/@EntryIndexedValue">False</s:String>
+	<s:Boolean x:Key="/Default/CodeStyle/Generate/=Overrides/@KeyIndexDefined">True</s:Boolean>
+	<s:String x:Key="/Default/CodeStyle/Generate/=Overrides/Options/=Async/@EntryIndexedValue">False</s:String>
+	<s:Boolean x:Key="/Default/CodeStyle/Generate/=RelationalMembers/@KeyIndexDefined">True</s:Boolean>
+	<s:String x:Key="/Default/CodeStyle/Generate/=RelationalMembers/Options/=ImplementIComparable/@EntryIndexedValue">False</s:String>
+	<s:String x:Key="/Default/CodeStyle/Generate/=RelationalMembers/Options/=RelationalOperators/@EntryIndexedValue">False</s:String>
+	<s:Boolean x:Key="/Default/CodeStyle/Naming/CSharpAutoNaming/IsNotificationDisabled/@EntryValue">True</s:Boolean>
+	<s:String x:Key="/Default/CodeStyle/Naming/CSharpNaming/PredefinedNamingRules/=Event/@EntryIndexedValue">&lt;Policy Inspect="True" Prefix="" Suffix="" Style="aaBb" /&gt;</s:String>
+	<s:String x:Key="/Default/CodeStyle/Naming/CSharpNaming/UserRules/=5f0fdb63_002Dc892_002D4d2c_002D9324_002D15c80b22a7ef/@EntryIndexedValue">&lt;Policy&gt;&lt;Descriptor Staticness="Instance" AccessRightKinds="Any" Description="Unity serialized field"&gt;&lt;ElementKinds&gt;&lt;Kind Name="UNITY_SERIALISED_FIELD" /&gt;&lt;/ElementKinds&gt;&lt;/Descriptor&gt;&lt;Policy Inspect="True" Prefix="_" Suffix="" Style="aaBb" /&gt;&lt;/Policy&gt;</s:String>
+	<s:String x:Key="/Default/CustomTools/CustomToolsData/@EntryValue"></s:String>
+	<s:Boolean x:Key="/Default/UserDictionary/Words/=Jagapippi/@EntryIndexedValue">True</s:Boolean></wpf:ResourceDictionary>

@@ -1,0 +1,21 @@
+root = true
+
+# Unix-style newlines with a newline ending every file
+[*]
+charset = utf-8
+end_of_line = lf
+insert_final_newline = true
+
+[*.cs]
+trim_trailing_whitespace = true
+
+[*.asmdef]
+indent_style = space
+indent_size = 4
+trim_trailing_whitespace = true
+
+[{package,packages-lock}.json]
+indent_style = space
+indent_size = 2
+insert_final_newline = false
+trim_trailing_whitespace = true
