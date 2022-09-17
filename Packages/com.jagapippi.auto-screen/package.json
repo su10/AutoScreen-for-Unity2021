@@ -5,7 +5,7 @@
   "description": "This plugin provide a smart solution for Safe Area.\nBy using the provided components, you can quickly check the safe area in simulator window.\nThis is achieved by transforming the RectTransform, but the changes are not saved, so version control systems such as git will not make any difference.",
   "unity": "2021.1",
   "license": "MIT",
-  "licensesUrl": "https://github.com/su10/AutoScreen-for-Device-Simulator/blob/main/LICENSE",
+  "licensesUrl": "https://github.com/su10/AutoScreen-for-Unity2021/blob/main/LICENSE",
   "documentationUrl": "https://github.com/su10/AutoScreen-for-Unity2021",
   "keywords": [
     "safearea"
