@@ -28,3 +28,6 @@ This is done by transforming the RectTransform, but the changes are not saved in
 or add a following line to `dependencies` field of your Packages/manifest.json.
 
 * `"com.jagapippi.auto-screen": "https://github.com/su10/AutoScreen-for-Unity2021.git?path=Packages/com.jagapippi.auto-screen"`
+
+## License
+MIT
