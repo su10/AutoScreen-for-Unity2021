@@ -43,7 +43,20 @@ namespace Jagapippi.AutoScreen
             );
         }
 
-        public static object GetActiveScreenShim() => ActiveScreenShimFieldInfo.GetValue(null);
+        public static object GetActiveScreenShim()
+        {
+            var activeScreenShim = ActiveScreenShimFieldInfo.GetValue(null);
+            if (activeScreenShim is System.Collections.IEnumerable enumerable)
+            {
+                var enumerator = enumerable.GetEnumerator();
+                while (enumerator.MoveNext())
+                {
+                    activeScreenShim = enumerator.Current;
+                    if (activeScreenShim.GetType().Name == "ScreenSimulation") break;
+                }
+            }
+            return activeScreenShim;
+        }
 
         // NOTE: ScreenSimulation#widthの値がおかしい場合があるのでScreenSimulation#Widthを参照する
         public static int width
