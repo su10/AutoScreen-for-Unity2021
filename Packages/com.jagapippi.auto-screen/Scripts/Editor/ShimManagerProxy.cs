@@ -13,6 +13,13 @@ namespace Jagapippi.AutoScreen
     internal static class ShimManagerProxy
     {
         private const string AssemblyName = "UnityEditor.DeviceSimulatorModule";
+#if UNITY_2021_2_8_OR_NEWER
+        private const string WidthKey = "width";
+        private const string HeightKey = "height";
+#else
+        private const string WidthKey = "Width";
+        private const string HeightKey = "Height";
+#endif
 
         private static readonly Type ShimManagerType = Assembly.Load("UnityEngine.dll").GetType("UnityEngine.ShimManager");
         private static readonly FieldInfo ActiveScreenShimFieldInfo = ShimManagerType.GetField("s_ActiveScreenShim", BindingFlags.Static | BindingFlags.NonPublic);
@@ -26,21 +33,8 @@ namespace Jagapippi.AutoScreen
                 .Select(assembly => assembly.GetType("UnityEditor.DeviceSimulation.ScreenSimulation"))
                 .First();
 
-            WidthPropertyInfo = screenSimulationType.GetProperty(
-#if UNITY_2021_2_8_OR_NEWER
-                "width"
-#else
-                "Width"
-#endif
-            );
-
-            HeightPropertyInfo = screenSimulationType.GetProperty(
-#if UNITY_2021_2_8_OR_NEWER
-                "height"
-#else
-                "Height"
-#endif
-            );
+            WidthPropertyInfo = screenSimulationType.GetProperty(WidthKey);
+            HeightPropertyInfo = screenSimulationType.GetProperty(HeightKey);
         }
 
         public static object GetActiveScreenShim()
@@ -65,7 +59,7 @@ namespace Jagapippi.AutoScreen
             {
                 var activeScreenShim = GetActiveScreenShim();
                 if (activeScreenShim == null) return UnityScreen.width;
-                return (int)WidthPropertyInfo.GetValue(activeScreenShim);
+                return activeScreenShim.GetType().GetProperty(WidthKey).GetValue(activeScreenShim) as int? ?? UnityScreen.width;
             }
         }
 
@@ -76,7 +70,7 @@ namespace Jagapippi.AutoScreen
             {
                 var activeScreenShim = GetActiveScreenShim();
                 if (activeScreenShim == null) return UnityScreen.height;
-                return (int)HeightPropertyInfo.GetValue(activeScreenShim);
+                return activeScreenShim.GetType().GetProperty(HeightKey).GetValue(activeScreenShim) as int? ?? UnityScreen.height;
             }
         }
     }
